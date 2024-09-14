@@ -21,15 +21,15 @@ const LanguageSelector: React.FC = () => {
 
     const handleLanguageSelect = (language: Language) => {
         setSelectedLanguage(language);
+        
     };
 
     return (
         <Dropdown
-            width='fit'
             buttonLabel={
                 <>
                     <FlagIcon code={selectedLanguage.code} size={20} />
-                    <span className="ml-1">{selectedLanguage.name}</span>
+                    <span className="hidden sm:block ml-1">{selectedLanguage.name}</span>
                 </>
             }
         >
@@ -38,7 +38,7 @@ const LanguageSelector: React.FC = () => {
                     <li key={language.code}>
                         <button
                             onClick={() => handleLanguageSelect(language)}
-                            className="flex items-center px-4 py-2 text-[14px] text-gray-600 hover:bg-gray-100 w-full text-left"
+                            className="flex items-center px-4 py-2 text-[14px] text-gray-600 dark:text-gray-50  hover:dark:text-green-400 hover:text-green-400 w-full text-left"
                         >
                             {language.name}
                         </button>

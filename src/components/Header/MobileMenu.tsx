@@ -19,7 +19,7 @@ const MobileMenu = ({
     links: { name: string; url: string }[];
 }) => (
     isOpen ? (
-        <div className="fixed inset-0 bg-white dark:bg-gray-900 z-50">
+        <div className="fixed inset-0 bg-white dark:bg-[#181C14] z-50">
             {/* Top Bar */}
             <div className="flex justify-between items-center p-4">
                 <Logo />
@@ -28,7 +28,7 @@ const MobileMenu = ({
                     <LanguageSelector />
                     <button
                         onClick={onToggle}
-                        className="text-gray-600 hover:text-gray-900"
+                        className="dark:text-gray-50 text-gray-600 hover:text-gray-900"
                     >
                         <X />
                     </button>
@@ -40,7 +40,7 @@ const MobileMenu = ({
                 <NavLink href="#">Download Facebook Videos</NavLink>
                 <button
                     onClick={toggleDropdown}
-                    className="pl-4 flex items-center text-gray-600 hover:text-gray-900"
+                    className="pl-4 flex items-center text-gray-600 hover:text-gray-900 dark:text-gray-50 hover:dark:text-gren-400"
                 >
                     More
                     <ChevronDown
@@ -54,7 +54,7 @@ const MobileMenu = ({
                             <li key={index}>
                                 <NavLink
                                     href={link.url}
-                                    className="text-sm w-full rounded-md bg-green-50"
+                                    className="text-sm w-full rounded-md bg-green-50 dark:bg-gray-900"
                                 >
                                     {link.name}
                                 </NavLink>

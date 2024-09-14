@@ -14,11 +14,11 @@ interface DropdownMenuProps {
 
 const DropdownMenu: React.FC<DropdownMenuProps> = ({ links }) => {
     return (
-        <Dropdown buttonLabel="More" width='52'>
+        <Dropdown buttonLabel="More">
             <ul>
                 {links.map((link, index) => (
                     <li key={index}>
-                        <NavLink href={link.url} className="text-xs">
+                        <NavLink href={link.url} className="w-52 text-xs">
                             {link.name}
                         </NavLink>
                     </li>

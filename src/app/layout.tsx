@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lexend } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Header/Navbar";
+import { ThemeProvider } from 'next-themes'
 
 const lexend = Lexend(
   {
@@ -24,9 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={lexend.className}>
-        <Navbar />
-        {children}
+      <body className={`${lexend.className} dark:bg-[#181C14]`}>
+        <ThemeProvider attribute="class">
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -6,15 +6,13 @@ import { ChevronDown } from 'lucide-react';
 interface DropdownProps {
     buttonLabel: React.ReactNode;
     children: React.ReactNode;
-    width: string;
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ buttonLabel, children,width }) => {
+const Dropdown: React.FC<DropdownProps> = ({ buttonLabel, children }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const toggleDropdown = () => setIsOpen(prev => !prev);
 
-    // if click outside dropdown, close it
     React.useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (event.target instanceof Element && !event.target.closest('.relative')) {
@@ -29,11 +27,15 @@ const Dropdown: React.FC<DropdownProps> = ({ buttonLabel, children,width }) => {
         };
     }, []);
 
+    const handleItemClick = () => {
+        setIsOpen(false);
+    };
+
     return (
-        <div className="relative">
+        <div className="relative z-50">
             <button
                 onClick={toggleDropdown}
-                className="flex items-center text-gray-600 hover:text-gray-900"
+                className="flex items-center dark:text-gray-50 text-gray-600 hover:dark:text-green-400 hover:text-gray-900"
             >
                 {buttonLabel}
                 <ChevronDown
@@ -44,17 +46,21 @@ const Dropdown: React.FC<DropdownProps> = ({ buttonLabel, children,width }) => {
                     })}
                 />
             </button>
-            <div
-                className={classNames(
-                    `absolute py-4 mt-2 w-${width} bg-white border border-gray-200 shadow-lg rounded-lg transition-all`,
-                    {
-                        'opacity-0 pointer-events-none -translate-y-4': !isOpen,
-                        'opacity-100 translate-y-0': isOpen,
-                    }
-                )}
-            >
-                {children}
-            </div>
+            {isOpen && (
+                <div
+                    className={classNames(
+                        `absolute py-4 mt-2 bg-white dark:bg-[#181C14] border border-gray-200 shadow-lg rounded-lg transition-all`,
+                        {
+                            'opacity-0 pointer-events-none -translate-y-4': !isOpen,
+                            'opacity-100 translate-y-0': isOpen,
+                        }
+                    )}
+                >
+                    <div onClick={handleItemClick}>
+                        {children}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
