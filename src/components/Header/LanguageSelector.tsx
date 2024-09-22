@@ -21,11 +21,12 @@ const LanguageSelector: React.FC = () => {
 
     const handleLanguageSelect = (language: Language) => {
         setSelectedLanguage(language);
-        
+
     };
 
     return (
         <Dropdown
+            variant='primary'
             buttonLabel={
                 <>
                     <FlagIcon code={selectedLanguage.code} size={20} />
